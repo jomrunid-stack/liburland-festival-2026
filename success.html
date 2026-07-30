@@ -7,596 +7,247 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  :root {
-    --primary: #6c5ce7; --primary-dark: #5a4bd1; --primary-deep: #4a3ab5;
-    --primary-light: #e0d4fd; --primary-soft: #f3edfa; --primary-glow: rgba(108,92,231,0.18);
-    --accent: #e84393; --accent-soft: #fce4f0;
-    --bg: #f4f2f7; --card: #FFFFFF; --card-alt: #FAFAFB;
-    --border: #e8e4ef; --border-light: #f0ecf5;
-    --text: #1a1025; --text-sec: #6b5f7b; --text-muted: #9e93a8;
-    --success: #1b8c3d; --success-soft: #e8f8ed;
-    --warn: #d4820a; --warn-soft: #fff8eb; --warn-border: #f5deb3;
-    --shadow-sm: 0 1px 3px rgba(26,16,37,0.04);
-    --shadow-md: 0 4px 20px rgba(26,16,37,0.06);
-    --shadow-lg: 0 12px 40px rgba(26,16,37,0.09);
-    --radius: 16px;
-  }
+:root{--p:#6c5ce7;--pd:#5a4bd1;--pdp:#4a3ab5;--pl:#e0d4fd;--ps:#f3edfa;--pg:rgba(108,92,231,.18);--a:#e84393;--bg:#f4f2f7;--c:#fff;--ca:#FAFAFB;--b:#e8e4ef;--bl:#f0ecf5;--t:#1a1025;--ts:#6b5f7b;--tm:#9e93a8;--s:#1b8c3d;--ss:#e8f8ed;--w:#d4820a;--ws:#fff8eb;--wb:#f5deb3;--r:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;padding-bottom:110px;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:-1;opacity:.4;background-image:radial-gradient(circle at 15% 15%,rgba(108,92,231,.07) 0%,transparent 50%),radial-gradient(circle at 85% 80%,rgba(232,67,147,.05) 0%,transparent 50%)}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg); color: var(--text);
-    -webkit-font-smoothing: antialiased;
-    padding-bottom: 110px; min-height: 100vh;
-  }
-  body::before {
-    content: ''; position: fixed; inset: 0; z-index: -1; opacity: 0.4;
-    background-image:
-      radial-gradient(circle at 15% 15%, rgba(108,92,231,0.07) 0%, transparent 50%),
-      radial-gradient(circle at 85% 80%, rgba(232,67,147,0.05) 0%, transparent 50%);
-  }
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bl);position:sticky;top:0;z-index:100}
+.logo{font-weight:800;font-size:22px;color:var(--a);letter-spacing:-.5px;text-decoration:none}
+.logo span{color:var(--p)}
+.topbar-r{display:flex;gap:8px}
+.tb{width:38px;height:38px;border-radius:10px;border:1px solid var(--b);background:var(--c);display:grid;place-items:center;color:var(--ts);cursor:pointer;transition:.2s;text-decoration:none;font-size:14px}
+.tb:hover{border-color:var(--p);color:var(--p)}
 
-  /* === TOPBAR === */
-  .topbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 20px; background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-light);
-    position: sticky; top: 0; z-index: 100;
-  }
-  .logo { font-weight: 800; font-size: 22px; color: var(--accent); letter-spacing: -0.5px; text-decoration: none; }
-  .logo span { color: var(--primary); }
-  .topbar-right { display: flex; align-items: center; gap: 8px; }
-  .topbar-btn {
-    width: 38px; height: 38px; border-radius: 10px;
-    border: 1px solid var(--border); background: var(--card);
-    display: grid; place-items: center; color: var(--text-sec);
-    cursor: pointer; transition: all 0.2s; text-decoration: none; font-size: 14px;
-  }
-  .topbar-btn:hover { border-color: var(--primary); color: var(--primary); }
+.ctn{max-width:540px;margin:auto;padding:20px 16px}
 
-  /* === CONTAINER === */
-  .container { max-width: 540px; margin: auto; padding: 20px 16px; }
+.hero{text-align:center;padding:32px 20px 24px;animation:fu .7s cubic-bezier(.16,1,.3,1) backwards}
+.badge{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#1b8c3d,#25b84a);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;box-shadow:0 8px 28px rgba(27,140,61,.3)}
+.badge::after{content:'';position:absolute;inset:-7px;border-radius:50%;border:2px solid rgba(27,140,61,.2);animation:bp 2.5s ease-out infinite}
+.badge i{font-size:34px;color:#fff}
+@keyframes bp{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.4);opacity:0}}
+.hero h1{font-size:21px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px}
+.hero p{font-size:13px;color:var(--ts);line-height:1.65;max-width:330px;margin:auto}
+.chip{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:6px 16px;border-radius:20px;background:var(--ss);font-size:11.5px;font-weight:600;color:var(--s)}
+.chip i{font-size:10px}
 
-  /* === SUCCESS HERO === */
-  .success-hero {
-    text-align: center; padding: 32px 20px 24px;
-    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) backwards;
-  }
-  .success-badge {
-    width: 76px; height: 76px; border-radius: 50%;
-    background: linear-gradient(135deg, #1b8c3d, #25b84a);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px; position: relative;
-    box-shadow: 0 8px 28px rgba(27,140,61,0.3);
-  }
-  .success-badge::after {
-    content: ''; position: absolute; inset: -7px; border-radius: 50%;
-    border: 2px solid rgba(27,140,61,0.2);
-    animation: badgePulse 2.5s ease-out infinite;
-  }
-  .success-badge i { font-size: 34px; color: #fff; }
-  @keyframes badgePulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    100% { transform: scale(1.4); opacity: 0; }
-  }
-  .success-hero h1 {
-    font-size: 21px; font-weight: 800; color: var(--text);
-    margin-bottom: 6px; letter-spacing: -0.3px;
-  }
-  .success-hero p {
-    font-size: 13px; color: var(--text-sec);
-    line-height: 1.65; max-width: 330px; margin: auto;
-  }
-  .success-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    margin-top: 14px; padding: 6px 16px; border-radius: 20px;
-    background: var(--success-soft); font-size: 11.5px;
-    font-weight: 600; color: var(--success);
-  }
-  .success-chip i { font-size: 10px; }
+.tc{background:var(--c);border-radius:var(--r);overflow:hidden;box-shadow:0 12px 40px rgba(26,16,37,.09);animation:fu .7s cubic-bezier(.16,1,.3,1) .12s backwards;border:1px solid var(--bl)}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-  /* === TICKET CARD === */
-  .ticket-card {
-    background: var(--card); border-radius: var(--radius);
-    overflow: hidden; box-shadow: var(--shadow-lg);
-    animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.12s backwards;
-    border: 1px solid var(--border-light);
-  }
+.th{background:linear-gradient(135deg,var(--pdp) 0%,var(--p) 50%,#7b4fbb 100%);padding:26px 24px 22px;color:#fff;position:relative;overflow:hidden}
+.th::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.06)}
+.th::after{content:'';position:absolute;bottom:-60px;left:-30px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.04)}
+.th-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;position:relative;z-index:1}
+.th-name{font-size:19px;font-weight:900;letter-spacing:-.4px;line-height:1.25;max-width:270px}
+.sc{flex-shrink:0;padding:5px 14px;border-radius:6px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;display:flex;align-items:center;gap:5px}
+.sc::before{content:'';width:6px;height:6px;border-radius:50%;background:#4ade80;animation:db 2s infinite}
+@keyframes db{0%,100%{opacity:1}50%{opacity:.35}}
+.th-meta{display:flex;gap:18px;position:relative;z-index:1;opacity:.88;font-size:12.5px;font-weight:500}
+.th-meta i{margin-right:5px;font-size:11px;opacity:.75}
 
-  /* Header */
-  .t-header {
-    background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 50%, #7b4fbb 100%);
-    padding: 26px 24px 22px; color: #fff; position: relative; overflow: hidden;
-  }
-  .t-header::before {
-    content: ''; position: absolute; top: -40px; right: -40px;
-    width: 160px; height: 160px; border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-  }
-  .t-header::after {
-    content: ''; position: absolute; bottom: -60px; left: -30px;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-  }
-  .t-header-top {
-    display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 14px; position: relative; z-index: 1;
-  }
-  .t-event-name {
-    font-size: 19px; font-weight: 900; letter-spacing: -0.4px;
-    line-height: 1.25; max-width: 270px;
-  }
-  .status-chip {
-    flex-shrink: 0; padding: 5px 14px; border-radius: 6px;
-    background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
-    font-size: 10.5px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 1.2px; display: flex; align-items: center; gap: 5px;
-  }
-  .status-chip::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: #4ade80; animation: dotBlink 2s infinite;
-  }
-  @keyframes dotBlink { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-  .t-header-meta {
-    display: flex; gap: 18px; position: relative; z-index: 1;
-    opacity: 0.88; font-size: 12.5px; font-weight: 500;
-  }
-  .t-header-meta i { margin-right: 5px; font-size: 11px; opacity: 0.75; }
+.tb-banner{padding:18px 22px 0}
+.tb-banner img{width:100%;height:145px;object-fit:cover;border-radius:10px;display:block}
 
-  /* Body */
-  .t-body { padding: 0; }
+.det{padding:20px 22px}
+.det-label{font-size:10px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px}
+.fl{font-size:10.5px;color:var(--tm);font-weight:600;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:4px;margin-bottom:4px}
+.fl i{font-size:9px;opacity:.55}
+.fv{font-size:13.5px;font-weight:700;line-height:1.35;word-break:break-word}
+.fv.hl{color:var(--p)}
 
-  /* Banner */
-  .t-banner { padding: 18px 22px 0; }
-  .t-banner img {
-    width: 100%; height: 145px; object-fit: cover;
-    border-radius: 10px; display: block;
-  }
+.tear{position:relative;height:1px;background:var(--b)}
+.tear::before,.tear::after{content:'';position:absolute;top:50%;transform:translateY(-50%);width:22px;height:22px;background:var(--bg);border-radius:50%;border:1px solid var(--bl)}
+.tear::before{left:-11px}
+.tear::after{right:-11px}
 
-  /* Details */
-  .t-details { padding: 20px 22px; }
-  .t-section-label {
-    font-size: 10px; font-weight: 700; color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 14px;
-  }
-  .t-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px;
-  }
-  .t-field {}
-  .t-label {
-    font-size: 10.5px; color: var(--text-muted); font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.5px;
-    display: flex; align-items: center; gap: 4px; margin-bottom: 4px;
-  }
-  .t-label i { font-size: 9px; opacity: 0.55; }
-  .t-val {
-    font-size: 13.5px; color: var(--text); font-weight: 700;
-    line-height: 1.35; word-break: break-word;
-  }
-  .t-val.hl { color: var(--primary); }
+.qr-sec{padding:26px 22px 30px;text-align:center;background:linear-gradient(180deg,var(--c) 0%,#fdfcff 100%)}
+.qr-frame{width:260px;height:140px;margin:0 auto 18px;border-radius:14px;padding:8px;background:#fff;position:relative;box-shadow:0 2px 14px var(--pg),0 0 0 1px var(--b);overflow:hidden}
+.qr-frame canvas{width:100%;height:100%;display:block;border-radius:8px}
+.qc{position:absolute;width:16px;height:16px;border:2.5px solid var(--p);border-radius:3px}
+.qc.tl{top:2px;left:2px;border-right:none;border-bottom:none;border-radius:5px 0 0 0}
+.qc.tr{top:2px;right:2px;border-left:none;border-bottom:none;border-radius:0 5px 0 0}
+.qc.bl{bottom:2px;left:2px;border-right:none;border-top:none;border-radius:0 0 0 5px}
+.qc.br{bottom:2px;right:2px;border-left:none;border-top:none;border-radius:0 0 5px 0}
+.qr-title{font-size:12.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.qr-notice{display:inline-flex;align-items:flex-start;gap:10px;background:var(--ws);border:1px solid var(--wb);border-radius:10px;padding:12px 18px;max-width:370px;text-align:left}
+.qr-notice i{color:var(--w);font-size:15px;margin-top:1px;flex-shrink:0}
+.qr-notice span{font-size:11.5px;color:#7a5a0a;font-weight:600;line-height:1.55}
 
-  /* Tear Divider */
-  .tear { position: relative; height: 1px; background: var(--border); }
-  .tear::before, .tear::after {
-    content: ''; position: absolute; top: 50%; transform: translateY(-50%);
-    width: 22px; height: 22px; background: var(--bg);
-    border-radius: 50%; border: 1px solid var(--border-light);
-  }
-  .tear::before { left: -11px; }
-  .tear::after { right: -11px; }
+.tf{background:var(--ca);border-top:1px solid var(--bl);padding:13px 22px;display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:var(--tm)}
+.tf strong{color:var(--p);font-weight:800}
+.tf .oid{font-weight:800;color:var(--ts);letter-spacing:.4px;font-family:monospace;font-size:11px}
 
-  /* QR Section */
-  .qr-section {
-    padding: 26px 22px 30px; text-align: center;
-    background: linear-gradient(180deg, var(--card) 0%, #fdfcff 100%);
-  }
-  .qr-frame {
-    width: 172px; height: 172px; margin: 0 auto 18px;
-    border-radius: 14px; padding: 10px;
-    background: #fff; position: relative;
-    box-shadow: 0 2px 14px var(--primary-glow), 0 0 0 1px var(--border);
-  }
-  .qr-frame svg { width: 100%; height: 100%; display: block; border-radius: 6px; }
-  .qr-corner {
-    position: absolute; width: 16px; height: 16px;
-    border: 2.5px solid var(--primary); border-radius: 3px;
-  }
-  .qr-corner.tl { top: 4px; left: 4px; border-right: none; border-bottom: none; border-radius: 5px 0 0 0; }
-  .qr-corner.tr { top: 4px; right: 4px; border-left: none; border-bottom: none; border-radius: 0 5px 0 0; }
-  .qr-corner.bl { bottom: 4px; left: 4px; border-right: none; border-top: none; border-radius: 0 0 0 5px; }
-  .qr-corner.br { bottom: 4px; right: 4px; border-left: none; border-top: none; border-radius: 0 0 5px 0; }
-  .qr-title {
-    font-size: 12.5px; font-weight: 800; color: var(--text);
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;
-  }
-  .qr-notice {
-    display: inline-flex; align-items: flex-start; gap: 10px;
-    background: var(--warn-soft); border: 1px solid var(--warn-border);
-    border-radius: 10px; padding: 12px 18px; max-width: 370px; text-align: left;
-  }
-  .qr-notice i { color: var(--warn); font-size: 15px; margin-top: 1px; flex-shrink: 0; }
-  .qr-notice span { font-size: 11.5px; color: #7a5a0a; font-weight: 600; line-height: 1.55; }
+.bot{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:13px 16px;z-index:100;border-top:1px solid var(--bl);box-shadow:0 -4px 24px rgba(26,16,37,.06)}
+.bot-in{max-width:540px;margin:auto;display:flex;gap:10px}
+.btn{flex:1;display:flex;justify-content:center;align-items:center;gap:9px;padding:14px 20px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:.25s;text-decoration:none;font-family:'Poppins',sans-serif}
+.btn-p{background:linear-gradient(135deg,var(--p),#7b4fbb);color:#fff;box-shadow:0 4px 16px rgba(108,92,231,.3)}
+.btn-p:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(108,92,231,.4)}
+.btn-g{background:var(--c);color:var(--ts);border:1px solid var(--b);flex:0 0 auto;padding:14px 18px}
+.btn-g:hover{background:var(--ps);color:var(--p);border-color:var(--pl)}
 
-  /* Footer */
-  .t-footer {
-    background: var(--card-alt); border-top: 1px solid var(--border-light);
-    padding: 13px 22px; display: flex; justify-content: space-between;
-    align-items: center; font-size: 10.5px; color: var(--text-muted);
-  }
-  .t-footer strong { color: var(--primary); font-weight: 800; }
-  .t-footer .oid { font-weight: 800; color: var(--text-sec); letter-spacing: 0.4px; font-family: monospace; font-size: 11px; }
+.hl-link{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:20px;padding:13px;border-radius:10px;background:0 0;border:1px solid var(--b);color:var(--tm);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s;font-family:'Poppins',sans-serif}
+.hl-link:hover{border-color:var(--p);color:var(--p);background:var(--ps)}
 
-  /* === BOTTOM BAR === */
-  .bottom {
-    position: fixed; left: 0; right: 0; bottom: 0;
-    background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 13px 16px; z-index: 100;
-    border-top: 1px solid var(--border-light);
-    box-shadow: 0 -4px 24px rgba(26,16,37,0.06);
-  }
-  .bottom-inner { max-width: 540px; margin: auto; display: flex; gap: 10px; }
-  .btn {
-    flex: 1; display: flex; justify-content: center; align-items: center;
-    gap: 9px; padding: 14px 20px; border: none; border-radius: 10px;
-    font-size: 14px; font-weight: 700; cursor: pointer;
-    transition: all 0.25s; text-decoration: none; font-family: 'Poppins', sans-serif;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--primary), #7b4fbb);
-    color: #fff; box-shadow: 0 4px 16px rgba(108,92,231,0.3);
-  }
-  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(108,92,231,0.4); }
-  .btn-primary:active { transform: translateY(0); }
-  .btn-ghost {
-    background: var(--card); color: var(--text-sec);
-    border: 1px solid var(--border); flex: 0 0 auto; padding: 14px 18px;
-  }
-  .btn-ghost:hover { background: var(--primary-soft); color: var(--primary); border-color: var(--primary-light); }
-
-  /* === HOME LINK === */
-  .home-link {
-    display: flex; justify-content: center; align-items: center; gap: 8px;
-    margin-top: 20px; padding: 13px; border-radius: 10px;
-    background: transparent; border: 1px solid var(--border);
-    color: var(--text-muted); font-size: 13px; font-weight: 600;
-    cursor: pointer; text-decoration: none; transition: all 0.2s;
-    font-family: 'Poppins', sans-serif;
-  }
-  .home-link:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-soft); }
-
-  /* === ANIMATIONS === */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 480px) {
-    .t-grid { grid-template-columns: 1fr; gap: 13px; }
-    .t-header { padding: 22px 18px 18px; }
-    .t-event-name { font-size: 17px; }
-    .t-details, .qr-section { padding-left: 18px; padding-right: 18px; }
-    .t-footer { padding: 11px 18px; }
-    .t-banner { padding: 14px 18px 0; }
-    .qr-notice { max-width: 100%; }
-    .t-header-meta { flex-direction: column; gap: 4px; }
-  }
+@media(max-width:480px){
+  .grid{grid-template-columns:1fr;gap:13px}
+  .th{padding:22px 18px 18px}
+  .th-name{font-size:17px}
+  .det,.qr-sec{padding-left:18px;padding-right:18px}
+  .tf{padding:11px 18px}
+  .tb-banner{padding:14px 18px 0}
+  .qr-notice{max-width:100%}
+  .th-meta{flex-direction:column;gap:4px}
+}
 </style>
 </head>
 <body>
 
-<!-- Topbar -->
 <div class="topbar">
   <a href="index.html" class="logo">mega<span>tix</span></a>
-  <div class="topbar-right">
-    <a href="index.html" class="topbar-btn" title="Beranda"><i class="fas fa-house"></i></a>
-    <div class="topbar-btn" title="Akun"><i class="fas fa-user"></i></div>
+  <div class="topbar-r">
+    <a href="index.html" class="tb" title="Beranda"><i class="fas fa-house"></i></a>
+    <div class="tb" title="Akun"><i class="fas fa-user"></i></div>
   </div>
 </div>
 
-<div class="container">
+<div class="ctn">
 
-  <!-- Success Hero -->
-  <div class="success-hero">
-    <div class="success-badge"><i class="fas fa-check"></i></div>
+  <div class="hero">
+    <div class="badge"><i class="fas fa-check"></i></div>
     <h1>Pembayaran Berhasil</h1>
     <p>E-tiket Anda sudah diterbitkan dan dikirim ke email. Tunjukkan halaman ini saat memasuki venue.</p>
-    <div class="success-chip">
-      <i class="fas fa-circle-check"></i>
-      Tiket Aktif — Siap Digunakan
-    </div>
+    <div class="chip"><i class="fas fa-circle-check"></i> Tiket Aktif — Siap Digunakan</div>
   </div>
 
-  <!-- Ticket Card -->
-  <div class="ticket-card">
-
-    <!-- Header -->
-    <div class="t-header">
-      <div class="t-header-top">
-        <div class="t-event-name">LIBURLAND FESTIVAL 2026</div>
-        <div class="status-chip">Paid</div>
+  <div class="tc">
+    <div class="th">
+      <div class="th-top">
+        <div class="th-name">LIBURLAND FESTIVAL 2026</div>
+        <div class="sc">Paid</div>
       </div>
-      <div class="t-header-meta">
+      <div class="th-meta">
         <span><i class="fas fa-calendar-day"></i>1 Agustus 2026 • 19:00 WITA</span>
         <span><i class="fas fa-map-marker-alt"></i>Banjarbaru</span>
       </div>
     </div>
 
-    <!-- Body -->
-    <div class="t-body">
+    <div>
+      <div class="tb-banner"><img src="banner.png" alt="Liburland Festival 2026"></div>
 
-      <!-- Banner -->
-      <div class="t-banner">
-        <img src="banner.png" alt="Liburland Festival 2026">
-      </div>
-
-      <!-- Detail Info -->
-      <div class="t-details">
-        <div class="t-section-label">Detail Pemesanan</div>
-        <div class="t-grid">
-          <div class="t-field">
-            <div class="t-label"><i class="fas fa-user"></i> Nama Pemesan</div>
-            <div class="t-val hl" id="dNama">-</div>
-          </div>
-          <div class="t-field">
-            <div class="t-label"><i class="fas fa-envelope"></i> Email</div>
-            <div class="t-val" id="dEmail">-</div>
-          </div>
-          <div class="t-field">
-            <div class="t-label"><i class="fas fa-ticket-alt"></i> Kategori Tiket</div>
-            <div class="t-val" id="dTiket">-</div>
-          </div>
-          <div class="t-field">
-            <div class="t-label"><i class="fas fa-layer-group"></i> Jumlah</div>
-            <div class="t-val" id="dJumlah">0 Tiket</div>
-          </div>
-          <div class="t-field">
-            <div class="t-label"><i class="fas fa-calendar-day"></i> Tanggal</div>
-            <div class="t-val">1 Agustus 2026</div>
-          </div>
-          <div class="t-field">
-            <div class="t-label"><i class="fas fa-map-marker-alt"></i> Lokasi</div>
-            <div class="t-val">Amanah Borneo Park</div>
-          </div>
-          <div class="t-field">
-            <div class="t-label"><i class="fab fa-whatsapp"></i> WhatsApp</div>
-            <div class="t-val" id="dWA">-</div>
-          </div>
-          <div class="t-field">
-            <div class="t-label"><i class="fas fa-hashtag"></i> Order ID</div>
-            <div class="t-val" id="dOID" style="font-family:monospace;font-size:12.5px;">-</div>
-          </div>
+      <div class="det">
+        <div class="det-label">Detail Pemesanan</div>
+        <div class="grid">
+          <div><div class="fl"><i class="fas fa-user"></i> Nama Pemesan</div><div class="fv hl" id="dN">-</div></div>
+          <div><div class="fl"><i class="fas fa-envelope"></i> Email</div><div class="fv" id="dE">-</div></div>
+          <div><div class="fl"><i class="fas fa-ticket-alt"></i> Kategori Tiket</div><div class="fv" id="dT">-</div></div>
+          <div><div class="fl"><i class="fas fa-layer-group"></i> Jumlah</div><div class="fv" id="dJ">0 Tiket</div></div>
+          <div><div class="fl"><i class="fas fa-calendar-day"></i> Tanggal</div><div class="fv">1 Agustus 2026</div></div>
+          <div><div class="fl"><i class="fas fa-map-marker-alt"></i> Lokasi</div><div class="fv">Amanah Borneo Park</div></div>
+          <div><div class="fl"><i class="fab fa-whatsapp"></i> WhatsApp</div><div class="fv" id="dW">-</div></div>
+          <div><div class="fl"><i class="fas fa-hashtag"></i> Order ID</div><div class="fv" id="dO" style="font-family:monospace;font-size:12.5px">-</div></div>
         </div>
       </div>
 
-      <!-- Tear Divider -->
       <div class="tear"></div>
 
-      <!-- QR Section -->
-      <div class="qr-section">
+      <div class="qr-sec">
         <div class="qr-frame">
-          <div class="qr-corner tl"></div>
-          <div class="qr-corner tr"></div>
-          <div class="qr-corner bl"></div>
-          <div class="qr-corner br"></div>
-          <svg viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-            <rect width="21" height="21" fill="#fff"/>
-            <rect x="0" y="0" width="7" height="7" fill="#1a1025"/>
-            <rect x="1" y="1" width="5" height="5" fill="#fff"/>
-            <rect x="2" y="2" width="3" height="3" fill="#1a1025"/>
-            <rect x="14" y="0" width="7" height="7" fill="#1a1025"/>
-            <rect x="15" y="1" width="5" height="5" fill="#fff"/>
-            <rect x="16" y="2" width="3" height="3" fill="#1a1025"/>
-            <rect x="0" y="14" width="7" height="7" fill="#1a1025"/>
-            <rect x="1" y="15" width="5" height="5" fill="#fff"/>
-            <rect x="2" y="16" width="3" height="3" fill="#1a1025"/>
-            <rect x="8" y="0" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="0" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="0" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="2" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="2" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="4" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="4" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="4" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="6" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="6" width="1" height="1" fill="#1a1025"/>
-            <rect x="0" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="0" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="0" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="2" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="2" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="4" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="4" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="4" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="6" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="6" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="9" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="14" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="16" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="18" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="20" y="8" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="9" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="9" width="1" height="1" fill="#1a1025"/>
-            <rect x="13" y="9" width="1" height="1" fill="#1a1025"/>
-            <rect x="15" y="9" width="1" height="1" fill="#1a1025"/>
-            <rect x="17" y="9" width="1" height="1" fill="#1a1025"/>
-            <rect x="19" y="9" width="1" height="1" fill="#1a1025"/>
-            <rect x="9" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="14" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="16" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="18" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="20" y="10" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="13" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="15" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="17" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="19" y="11" width="1" height="1" fill="#1a1025"/>
-            <rect x="9" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="14" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="16" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="18" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="20" y="12" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="14" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="14" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="14" width="1" height="1" fill="#1a1025"/>
-            <rect x="14" y="14" width="1" height="1" fill="#1a1025"/>
-            <rect x="16" y="14" width="1" height="1" fill="#1a1025"/>
-            <rect x="18" y="14" width="1" height="1" fill="#1a1025"/>
-            <rect x="20" y="14" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="15" width="1" height="1" fill="#1a1025"/>
-            <rect x="9" y="15" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="15" width="1" height="1" fill="#1a1025"/>
-            <rect x="15" y="15" width="1" height="1" fill="#1a1025"/>
-            <rect x="17" y="15" width="1" height="1" fill="#1a1025"/>
-            <rect x="19" y="15" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="16" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="16" width="1" height="1" fill="#1a1025"/>
-            <rect x="13" y="16" width="1" height="1" fill="#1a1025"/>
-            <rect x="14" y="16" width="1" height="1" fill="#1a1025"/>
-            <rect x="16" y="16" width="1" height="1" fill="#1a1025"/>
-            <rect x="18" y="16" width="1" height="1" fill="#1a1025"/>
-            <rect x="20" y="16" width="1" height="1" fill="#1a1025"/>
-            <rect x="9" y="17" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="17" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="17" width="1" height="1" fill="#1a1025"/>
-            <rect x="15" y="17" width="1" height="1" fill="#1a1025"/>
-            <rect x="17" y="17" width="1" height="1" fill="#1a1025"/>
-            <rect x="19" y="17" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="18" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="18" width="1" height="1" fill="#1a1025"/>
-            <rect x="13" y="18" width="1" height="1" fill="#1a1025"/>
-            <rect x="14" y="18" width="1" height="1" fill="#1a1025"/>
-            <rect x="16" y="18" width="1" height="1" fill="#1a1025"/>
-            <rect x="18" y="18" width="1" height="1" fill="#1a1025"/>
-            <rect x="20" y="18" width="1" height="1" fill="#1a1025"/>
-            <rect x="9" y="19" width="1" height="1" fill="#1a1025"/>
-            <rect x="11" y="19" width="1" height="1" fill="#1a1025"/>
-            <rect x="12" y="19" width="1" height="1" fill="#1a1025"/>
-            <rect x="15" y="19" width="1" height="1" fill="#1a1025"/>
-            <rect x="17" y="19" width="1" height="1" fill="#1a1025"/>
-            <rect x="19" y="19" width="1" height="1" fill="#1a1025"/>
-            <rect x="8" y="20" width="1" height="1" fill="#1a1025"/>
-            <rect x="10" y="20" width="1" height="1" fill="#1a1025"/>
-            <rect x="13" y="20" width="1" height="1" fill="#1a1025"/>
-            <rect x="14" y="20" width="1" height="1" fill="#1a1025"/>
-            <rect x="16" y="20" width="1" height="1" fill="#1a1025"/>
-            <rect x="18" y="20" width="1" height="1" fill="#1a1025"/>
-            <rect x="20" y="20" width="1" height="1" fill="#1a1025"/>
-          </svg>
+          <div class="qc tl"></div><div class="qc tr"></div><div class="qc bl"></div><div class="qc br"></div>
+          <canvas id="bc" width="520" height="280"></canvas>
         </div>
-        <div class="qr-title">E-Ticket QR Code</div>
+        <div class="qr-title">E-Ticket Barcode</div>
         <div class="qr-notice">
           <i class="fas fa-shield-halved"></i>
           <span>Scan QR saat di venue. Jangan berikan QR kepada orang lain.</span>
         </div>
       </div>
-
     </div>
 
-    <!-- Footer -->
-    <div class="t-footer">
+    <div class="tf">
       <span>Diterbitkan oleh <strong>MEGATIX</strong></span>
-      <span class="oid" id="dOID2">-</span>
+      <span class="oid" id="dO2">-</span>
     </div>
-
   </div>
 
-  <!-- Home Link -->
-  <a href="index.html" class="home-link">
-    <i class="fas fa-arrow-left"></i> Kembali ke Beranda
-  </a>
-
+  <a href="index.html" class="hl-link"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
 </div>
 
-<!-- Bottom Bar -->
-<div class="bottom">
-  <div class="bottom-inner">
-    <a href="index.html" class="btn btn-ghost" title="Beranda"><i class="fas fa-house"></i></a>
-    <a href="index.html" class="btn btn-primary"><i class="fas fa-download"></i> Unduh E-Tiket</a>
+<div class="bot">
+  <div class="bot-in">
+    <a href="index.html" class="btn btn-g" title="Beranda"><i class="fas fa-house"></i></a>
+    <a href="index.html" class="btn btn-p"><i class="fas fa-download"></i> Unduh E-Tiket</a>
   </div>
 </div>
 
 <script>
-  /*
-   * ============================================================
-   * DATA FLOW ANALYSIS (diselaraskan dengan seluruh halaman):
-   * ============================================================
-   *
-   * index.html  → setItem('megatix_cart', {
-   *                eventName, eventDate, eventVenue,
-   *                items: [{jenis, jumlah, harga, subtotal}],
-   *                totalQty, totalPrice, timestamp
-   *              })
-   *
-   * form.html   → baca 'megatix_cart'
-   *              → setItem('megatix_order', {
-   *                  nama,        ← dari input #nama
-   *                  email,       ← dari input #email
-   *                  whatsapp,    ← dari input #wa  (BUKAN 'wa')
-   *                  cart,        ← langsung copy dari megatix_cart
-   *                  holders      ← array pemegang tiket tambahan
-   *                })
-   *
-   * qris.html   → setItem('orderId', 'MEGATIX-' + Date.now())
-   *              → baca 'megatix_order' untuk tampilan
-   *              → redirect ke success.html
-   *
-   * success.html (halaman ini):
-   *              → baca 'megatix_order' untuk nama, email, whatsapp, cart
-   *              → baca 'orderId' untuk Order ID
-   * ============================================================
-   */
+/* ── Data Flow ──
+ * index.html  → megatix_cart  {items:[{jenis,jumlah,harga,subtotal}], totalQty, totalPrice}
+ * form.html   → megatix_order {nama, email, whatsapp, cart, holders}
+ * qris.html   → orderId = 'MEGATIX-' + timestamp
+ * success.html → baca megatix_order + orderId
+ */
 
-  var order = {};
-  try {
-    order = JSON.parse(localStorage.getItem('megatix_order')) || {};
-  } catch (e) {
-    order = {};
+var order = {};
+try { order = JSON.parse(localStorage.getItem('megatix_order')) || {}; } catch(e) { order = {}; }
+
+var oid = localStorage.getItem('orderId') || 'MEGATIX-000';
+var cart = order.cart || { items: [], totalQty: 0 };
+var items = cart.items || [];
+
+document.getElementById('dN').textContent = order.nama || '-';
+document.getElementById('dE').textContent = order.email || '-';
+document.getElementById('dW').textContent = order.whatsapp || '-';
+document.getElementById('dO').textContent = oid;
+document.getElementById('dO2').textContent = oid;
+document.getElementById('dT').textContent = items.map(function(i){return i.jenis}).filter(Boolean).join(', ') || '-';
+document.getElementById('dJ').textContent = (cart.totalQty || 0) + ' Tiket';
+
+/* ── Barcode Generator (Code128-style, deterministik dari orderId) ── */
+function drawBarcode(canvas, text) {
+  var ctx = canvas.getContext('2d');
+  var w = canvas.width, h = canvas.height;
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, w, h);
+
+  // Bangun pola bar dari karakter orderId — setiap karakter menghasilkan 4 bar unik
+  var bars = [2,1,1,2,3,2]; // start pattern
+  for (var i = 0; i < text.length; i++) {
+    var c = text.charCodeAt(i);
+    bars.push(
+      (c % 3) + 1,
+      ((c >> 2) % 2) + 1,
+      ((c >> 4) % 3) + 1,
+      ((c >> 6) % 2) + 1
+    );
+  }
+  bars.push(2,3,2,1,1,2); // stop pattern
+
+  // Hitung total unit lebar
+  var total = 0;
+  for (var i = 0; i < bars.length; i++) total += bars[i];
+
+  var pad = 24, barH = h - 40;
+  var unit = (w - pad * 2) / total;
+  var x = pad;
+
+  // Gambar bar hitam-putih bergantian
+  ctx.fillStyle = '#1a1025';
+  for (var i = 0; i < bars.length; i++) {
+    if (i % 2 === 0) {
+      ctx.fillRect(Math.round(x), 8, Math.max(1, Math.round(bars[i] * unit)), barH);
+    }
+    x += bars[i] * unit;
   }
 
-  // Order ID — diset oleh qris.html
-  var orderId = localStorage.getItem('orderId') || 'MEGATIX-000';
+  // Teks orderId di bawah barcode
+  ctx.fillStyle = '#1a1025';
+  ctx.font = '600 13px Poppins, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(text, w / 2, h - 10);
+}
 
-  // Cart data — disimpan di dalam order.cart oleh form.html
-  var cart = order.cart || { items: [], totalQty: 0, totalPrice: 0 };
-  var items = cart.items || [];
-
-  // Nama — key: 'nama' (dari form.html input#nama)
-  var nama = order.nama || '-';
-
-  // Email — key: 'email' (dari form.html input#email)
-  var email = order.email || '-';
-
-  // WhatsApp — key: 'whatsapp' (dari form.html, disimpan sebagai 'whatsapp', BUKAN 'wa')
-  var wa = order.whatsapp || '-';
-
-  // Kategori tiket
-  var jenisTiket = items
-    .map(function(i) { return i.jenis; })
-    .filter(Boolean)
-    .join(', ') || '-';
-
-  // Jumlah tiket
-  var jumlahTiket = cart.totalQty || 0;
-
-  // ── RENDER KE DOM ──
-  document.getElementById('dNama').textContent = nama;
-  document.getElementById('dEmail').textContent = email;
-  document.getElementById('dWA').textContent = wa;
-  document.getElementById('dOID').textContent = orderId;
-  document.getElementById('dOID2').textContent = orderId;
-  document.getElementById('dTiket').textContent = jenisTiket;
-  document.getElementById('dJumlah').textContent = jumlahTiket + ' Tiket';
+drawBarcode(document.getElementById('bc'), oid);
 </script>
 
 </body>
