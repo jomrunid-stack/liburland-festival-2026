@@ -7,247 +7,153 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-  body { background: #f5f5f5; color: #222; line-height: 1.6; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#f5f5f5;color:#222;line-height:1.6}
 
-  /* ===== TOPBAR ===== */
-  .topbar {
-    background: #fff; padding: 14px 20px; border-bottom: 1px solid #eee;
-    display: flex; justify-content: space-between; align-items: center;
-    position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .topbar .logo { font-weight: 800; font-size: 22px; color: #e84393; letter-spacing: -0.5px; }
-  .topbar .logo span { color: #6c5ce7; }
-  .topbar nav a { margin-left: 22px; text-decoration: none; color: #555; font-size: 14px; font-weight: 500; }
-  .topbar nav a:hover { color: #6c5ce7; }
+/* Topbar */
+.topbar{background:#fff;padding:14px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.topbar .logo{font-weight:800;font-size:22px;color:#e84393;letter-spacing:-.5px}
+.topbar .logo span{color:#6c5ce7}
+.topbar nav a{margin-left:22px;text-decoration:none;color:#555;font-size:14px;font-weight:500}
+.topbar nav a:hover{color:#6c5ce7}
 
-  /* ===== CONTAINER ===== */
-  .container { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+.container{max-width:1100px;margin:0 auto;padding:24px 20px}
 
-  /* ===== CLOSED BANNER ===== */
-  .closed-banner {
-    background: linear-gradient(135deg, #d63031, #e74c3c); color: #fff;
-    text-align: center; padding: 14px; font-weight: 600; font-size: 15px;
-    border-radius: 10px; margin-bottom: 24px; box-shadow: 0 4px 14px rgba(214, 48, 49, 0.35);
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-  }
+/* Open Banner */
+.open-banner{
+  background:linear-gradient(135deg,#00b894,#00cec9);color:#fff;
+  text-align:center;padding:14px;font-weight:600;font-size:15px;
+  border-radius:10px;margin-bottom:24px;
+  box-shadow:0 4px 14px rgba(0,184,148,.35);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  animation:bannerGlow 3s ease-in-out infinite alternate;
+}
+@keyframes bannerGlow{
+  0%{box-shadow:0 4px 14px rgba(0,184,148,.35)}
+  100%{box-shadow:0 4px 24px rgba(0,184,148,.55)}
+}
 
-  /* ===== EVENT HEADER ===== */
-  .event-header {
-    background: #fff; border-radius: 16px; overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 24px;
-  }
-  .event-banner img { width: 100%; height: auto; display: block; object-fit: cover; }
-  .event-meta {
-    padding: 24px 30px; display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;
-  }
-  .meta-item { display: flex; align-items: flex-start; gap: 14px; }
-  .meta-item .icon {
-    width: 44px; height: 44px; background: linear-gradient(135deg, #6c5ce7, #a55eea);
-    border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 18px; flex-shrink: 0;
-  }
-  .meta-item .text label {
-    display: block; font-size: 12px; color: #999; text-transform: uppercase;
-    letter-spacing: 0.5px; margin-bottom: 4px;
-  }
-  .meta-item .text value { display: block; font-size: 15px; font-weight: 600; color: #2d3436; }
+/* Event Header */
+.event-header{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06);margin-bottom:24px}
+.event-banner img{width:100%;height:auto;display:block;object-fit:cover}
+.event-meta{padding:24px 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.meta-item{display:flex;align-items:flex-start;gap:14px}
+.meta-item .icon{width:44px;height:44px;background:linear-gradient(135deg,#6c5ce7,#a55eea);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
+.meta-item .text label{display:block;font-size:12px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.meta-item .text value{display:block;font-size:15px;font-weight:600;color:#2d3436}
 
-  /* ===== SECTION CARD ===== */
-  .section-card {
-    background: #fff; border-radius: 16px; padding: 28px;
-    margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  }
-  .section-card h2 {
-    font-size: 22px; font-weight: 700; color: #2d3436; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-card h2::before {
-    content: ''; width: 5px; height: 24px;
-    background: linear-gradient(180deg, #6c5ce7, #fd79a8); border-radius: 3px;
-  }
-  .section-card p { color: #555; font-size: 15px; margin-bottom: 10px; line-height: 1.8; }
+/* Section Card */
+.section-card{background:#fff;border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.section-card h2{font-size:22px;font-weight:700;color:#2d3436;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-card h2::before{content:'';width:5px;height:24px;background:linear-gradient(180deg,#6c5ce7,#fd79a8);border-radius:3px}
+.section-card p{color:#555;font-size:15px;margin-bottom:10px;line-height:1.8}
 
-  /* ===== VENUE ===== */
-  .venue-content { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-  @media (max-width: 768px) { .venue-content { grid-template-columns: 1fr; } }
-  .venue-info .venue-name { font-size: 18px; font-weight: 700; color: #2d3436; margin-bottom: 8px; display: block; }
-  .venue-info .venue-address { color: #777; font-size: 14px; margin-bottom: 8px; display: block; }
-  .map-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(135deg, #6c5ce7, #a55eea); color: #fff;
-    padding: 10px 20px; border-radius: 8px; text-decoration: none;
-    font-size: 14px; font-weight: 600; margin-top: 12px;
-  }
-  .map-embed { border-radius: 12px; overflow: hidden; border: 1px solid #eee; height: 250px; }
-  .map-embed iframe { width: 100%; height: 100%; border: 0; }
+/* Venue */
+.venue-content{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+@media(max-width:768px){.venue-content{grid-template-columns:1fr}}
+.venue-info .venue-name{font-size:18px;font-weight:700;color:#2d3436;margin-bottom:8px;display:block}
+.venue-info .venue-address{color:#777;font-size:14px;margin-bottom:8px;display:block}
+.map-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#6c5ce7,#a55eea);color:#fff;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;margin-top:12px}
+.map-embed{border-radius:12px;overflow:hidden;border:1px solid #eee;height:250px}
+.map-embed iframe{width:100%;height:100%;border:0}
 
-  /* ===== TICKET LIST ===== */
-  .ticket-list { display: grid; grid-template-columns: 1fr; gap: 14px; }
-  .ticket-card {
-    border: 2px solid #f0f0f0; border-radius: 12px; padding: 20px 22px;
-    display: flex; justify-content: space-between; align-items: center;
-    transition: all 0.3s; background: #fff;
-  }
-  .ticket-card.closed { background: #fafafa; opacity: 0.85; }
-  .ticket-card:not(.closed):hover { border-color: #6c5ce7; box-shadow: 0 6px 18px rgba(108, 92, 231, 0.15); }
-  .ticket-info .ticket-name { font-size: 16px; font-weight: 600; color: #2d3436; margin-bottom: 4px; }
-  .ticket-info .ticket-price { font-size: 17px; font-weight: 700; color: #6c5ce7; }
-  .ticket-status { padding: 7px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; }
-  .status-closed { background: #fee; color: #d63031; border: 1px solid #fcc; }
+/* Ticket List */
+.ticket-list{display:grid;grid-template-columns:1fr;gap:14px}
+.ticket-card{border:2px solid #f0f0f0;border-radius:12px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;transition:all .3s;background:#fff}
+.ticket-card.closed{background:#fafafa;opacity:.85}
+.ticket-card:not(.closed):hover{border-color:#6c5ce7;box-shadow:0 6px 18px rgba(108,92,231,.15)}
+.ticket-info .ticket-name{font-size:16px;font-weight:600;color:#2d3436;margin-bottom:4px}
+.ticket-info .ticket-price{font-size:17px;font-weight:700;color:#6c5ce7}
+.ticket-status{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;text-transform:uppercase}
+.status-closed{background:#fee;color:#d63031;border:1px solid #fcc}
 
-  /* ===== ANIMASI PREMIUM (DISEDERHANAKAN) ===== */
-  .premium-ticket-alert {
-    margin-top: 30px; margin-bottom: 20px; border-radius: 16px;
-    overflow: hidden; position: relative;
-    background: linear-gradient(135deg, #1a0033, #2d0052, #4a0080, #2d0052, #1a0033);
-    background-size: 300% 300%;
-    animation: gradientShift 6s ease infinite;
-    box-shadow: 0 10px 40px rgba(108, 92, 231, 0.5), 0 0 60px rgba(238, 9, 121, 0.3);
-    border: 2px solid rgba(255, 215, 0, 0.4);
-  }
-  @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-  /* Shimmer overlay */
-  .premium-ticket-alert::before {
-    content: ''; position: absolute; top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), rgba(255, 255, 255, 0.2), rgba(255, 215, 0, 0.15), transparent);
-    animation: shimmer 3s infinite; pointer-events: none; z-index: 1;
-  }
-  @keyframes shimmer {
-    0% { left: -100%; }
-    100% { left: 100%; }
-  }
-  .premium-alert-content { position: relative; z-index: 2; padding: 28px 24px; text-align: center; color: #fff; }
-  .premium-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(135deg, #ffd700, #ffaa00); color: #1a0033;
-    padding: 6px 18px; border-radius: 30px; font-size: 12px; font-weight: 800;
-    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5); }
-    50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(255, 215, 0, 0.8); }
-  }
-  .premium-alert-title {
-    font-size: 28px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase;
-    margin-bottom: 14px; display: flex; align-items: center; justify-content: center;
-    gap: 14px; flex-wrap: wrap; text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.6);
-  }
-  .warning-icon-anim {
-    display: inline-block; font-size: 36px;
-    animation: shake 1.2s infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 190, 11, 0.9));
-  }
-  @keyframes shake {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    20% { transform: rotate(-12deg) scale(1.1); }
-    40% { transform: rotate(10deg) scale(1.1); }
-    60% { transform: rotate(-6deg) scale(1.05); }
-    80% { transform: rotate(4deg) scale(1.05); }
-  }
-  .ticket-count-display { display: inline-flex; align-items: center; gap: 6px; }
-  .ticket-count-number {
-    display: inline-block; font-size: 42px; font-weight: 900;
-    background: linear-gradient(180deg, #ffd700 0%, #ff6b00 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; animation: bounce 1.5s ease-in-out infinite;
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); min-width: 50px;
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8px) scale(1.15); }
-  }
-  .premium-alert-subtitle {
-    font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, 0.9);
-    margin-top: 14px; animation: fadeInOut 2s ease-in-out infinite;
-  }
-  @keyframes fadeInOut {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
-  }
-  /* Progress bar */
-  .progress-container {
-    margin-top: 20px; background: rgba(255, 255, 255, 0.15); border-radius: 30px;
-    height: 12px; overflow: hidden; position: relative; border: 1px solid rgba(255, 215, 0, 0.3);
-  }
-  .progress-bar {
-    height: 100%; background: linear-gradient(90deg, #ff006e, #ffbe0b, #ff006e);
-    background-size: 200% 100%; width: 22.5%; border-radius: 30px; position: relative;
-    animation: gradientShift 2s linear infinite; box-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
-  }
-  .progress-bar::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-    animation: shimmer 1.5s infinite;
-  }
-  .progress-label { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: rgba(255, 255, 255, 0.7); }
-  /* Particles */
-  .particle {
-    position: absolute; border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.8), transparent);
-    pointer-events: none; z-index: 1;
-    animation: floatUp 4s infinite;
-  }
-  .p1 { width: 6px; height: 6px; top: 20%; left: 10%; animation-delay: 0s; }
-  .p2 { width: 8px; height: 8px; top: 70%; left: 15%; animation-delay: 0.5s; }
-  .p3 { width: 5px; height: 5px; top: 30%; right: 12%; animation-delay: 1s; }
-  .p4 { width: 7px; height: 7px; top: 80%; right: 18%; animation-delay: 1.5s; }
-  .p5 { width: 4px; height: 4px; top: 50%; left: 50%; animation-delay: 2s; }
-  @keyframes floatUp {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
-    50% { transform: translateY(-30px) scale(1.5); opacity: 0.3; }
-  }
-  @media (max-width: 600px) {
-    .premium-alert-title { font-size: 20px; gap: 8px; }
-    .warning-icon-anim { font-size: 28px; }
-    .ticket-count-number { font-size: 32px; }
-    .premium-alert-content { padding: 22px 16px; }
-  }
+/* Premium Alert */
+.premium-ticket-alert{
+  margin:30px 0 20px;border-radius:16px;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,#1a0033,#2d0052,#4a0080,#2d0052,#1a0033);
+  background-size:300% 300%;animation:gradShift 6s ease infinite;
+  box-shadow:0 10px 40px rgba(108,92,231,.5),0 0 60px rgba(238,9,121,.3);
+  border:2px solid rgba(255,215,0,.4);
+}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.premium-ticket-alert::before{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,.15),rgba(255,255,255,.2),rgba(255,215,0,.15),transparent);
+  animation:shimmer 3s infinite;pointer-events:none;z-index:1;
+}
+@keyframes shimmer{0%{left:-100%}100%{left:100%}}
+.premium-alert-content{position:relative;z-index:2;padding:28px 24px;text-align:center;color:#fff}
+.premium-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#ffd700,#ffaa00);color:#1a0033;
+  padding:6px 18px;border-radius:30px;font-size:12px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 4px 15px rgba(255,215,0,.5)}50%{transform:scale(1.05);box-shadow:0 6px 25px rgba(255,215,0,.8)}}
+.premium-alert-title{
+  font-size:28px;font-weight:900;letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:14px;display:flex;align-items:center;justify-content:center;
+  gap:14px;flex-wrap:wrap;
+  text-shadow:0 2px 20px rgba(0,0,0,.5),0 0 20px rgba(255,215,0,.6);
+}
+.warning-icon-anim{display:inline-block;font-size:36px;animation:shake 1.2s infinite;filter:drop-shadow(0 0 10px rgba(255,190,11,.9))}
+@keyframes shake{0%,100%{transform:rotate(0) scale(1)}20%{transform:rotate(-12deg) scale(1.1)}40%{transform:rotate(10deg) scale(1.1)}60%{transform:rotate(-6deg) scale(1.05)}80%{transform:rotate(4deg) scale(1.05)}}
+.ticket-count-number{
+  display:inline-block;font-size:42px;font-weight:900;
+  background:linear-gradient(180deg,#ffd700,#ff6b00);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;animation:bounce 1.5s ease-in-out infinite;
+  filter:drop-shadow(0 0 15px rgba(255,215,0,.8));min-width:50px;
+}
+@keyframes bounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.15)}}
+.premium-alert-subtitle{font-size:15px;font-weight:500;color:rgba(255,255,255,.9);margin-top:14px;animation:fadeIO 2s ease-in-out infinite}
+@keyframes fadeIO{0%,100%{opacity:.7}50%{opacity:1}}
+.progress-container{margin-top:20px;background:rgba(255,255,255,.15);border-radius:30px;height:12px;overflow:hidden;border:1px solid rgba(255,215,0,.3)}
+.progress-bar{
+  height:100%;background:linear-gradient(90deg,#ff006e,#ffbe0b,#ff006e);
+  background-size:200% 100%;width:22.5%;border-radius:30px;position:relative;
+  animation:gradShift 2s linear infinite;box-shadow:0 0 20px rgba(255,0,110,.8);
+}
+.progress-bar::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:shimmer 1.5s infinite}
+.progress-label{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:rgba(255,255,255,.7)}
 
-  /* ===== QTY SELECTOR ===== */
-  .qty-selector {
-    display: flex; align-items: center; background: #f8f9fa;
-    border: 1px solid #ddd; border-radius: 30px; padding: 4px;
-  }
-  .qty-btn {
-    width: 36px; height: 36px; border: none; background: #6c5ce7; color: #fff;
-    border-radius: 50%; font-size: 18px; font-weight: bold; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .qty-btn:hover { background: #5a4bd1; }
-  .qty-btn:active { transform: scale(0.9); }
-  .qty-value { min-width: 40px; text-align: center; font-size: 16px; font-weight: 700; color: #2d3436; }
+/* Particles */
+.particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.8),transparent);pointer-events:none;z-index:1;animation:floatUp 4s infinite}
+.p1{width:6px;height:6px;top:20%;left:10%;animation-delay:0s}
+.p2{width:8px;height:8px;top:70%;left:15%;animation-delay:.5s}
+.p3{width:5px;height:5px;top:30%;right:12%;animation-delay:1s}
+.p4{width:7px;height:7px;top:80%;right:18%;animation-delay:1.5s}
+.p5{width:4px;height:4px;top:50%;left:50%;animation-delay:2s}
+@keyframes floatUp{0%,100%{transform:translateY(0) scale(1);opacity:.8}50%{transform:translateY(-30px) scale(1.5);opacity:.3}}
 
-  /* ===== TICKET NOTE & BUY BUTTON ===== */
-  .ticket-note {
-    margin-top: 18px; padding: 12px 16px; background: #fff8e1;
-    border-left: 4px solid #ffa726; border-radius: 6px; font-size: 13px; color: #795548;
-  }
-  .buy-btn-container { margin-top: 24px; text-align: center; }
-  .buy-btn {
-    background: linear-gradient(135deg, #e84393, #6c5ce7); color: white; border: none;
-    padding: 16px 50px; font-size: 18px; font-weight: 700; border-radius: 30px;
-    cursor: pointer; transition: all 0.3s; box-shadow: 0 6px 20px rgba(232, 67, 147, 0.4);
-    text-transform: uppercase;
-  }
-  .buy-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(232, 67, 147, 0.5); }
-  .buy-btn:active { transform: translateY(0); }
+@media(max-width:600px){
+  .premium-alert-title{font-size:20px;gap:8px}
+  .warning-icon-anim{font-size:28px}
+  .ticket-count-number{font-size:32px}
+  .premium-alert-content{padding:22px 16px}
+}
 
-  /* ===== FOOTER ===== */
-  footer { background: #2d3436; color: #b2bec3; padding: 30px 20px; text-align: center; font-size: 13px; margin-top: 30px; }
-  footer strong { color: #fff; }
+/* Qty Selector */
+.qty-selector{display:flex;align-items:center;background:#f8f9fa;border:1px solid #ddd;border-radius:30px;padding:4px}
+.qty-btn{width:36px;height:36px;border:none;background:#6c5ce7;color:#fff;border-radius:50%;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .1s}
+.qty-btn:hover{background:#5a4bd1}
+.qty-btn:active{transform:scale(.9)}
+.qty-value{min-width:40px;text-align:center;font-size:16px;font-weight:700;color:#2d3436}
+
+/* Note & Buy */
+.ticket-note{margin-top:18px;padding:12px 16px;background:#fff8e1;border-left:4px solid #ffa726;border-radius:6px;font-size:13px;color:#795548}
+.buy-btn-container{margin-top:24px;text-align:center}
+.buy-btn{background:linear-gradient(135deg,#e84393,#6c5ce7);color:#fff;border:none;padding:16px 50px;font-size:18px;font-weight:700;border-radius:30px;cursor:pointer;transition:all .3s;box-shadow:0 6px 20px rgba(232,67,147,.4);text-transform:uppercase}
+.buy-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(232,67,147,.5)}
+.buy-btn:active{transform:translateY(0)}
+
+footer{background:#2d3436;color:#b2bec3;padding:30px 20px;text-align:center;font-size:13px;margin-top:30px}
+footer strong{color:#fff}
 </style>
 </head>
 <body>
 
-<!-- ===== TOPBAR ===== -->
 <div class="topbar">
   <div class="logo">mega<span>tix</span></div>
   <nav>
@@ -257,15 +163,13 @@
   </nav>
 </div>
 
-<!-- ===== CONTAINER ===== -->
 <div class="container">
 
-  <!-- Closed Banner -->
-  <div class="closed-banner">
-    <i class="fas fa-exclamation-circle"></i> Ticket sales for this event are closed
+  <!-- Banner: Open Additional Sale -->
+  <div class="open-banner">
+    <i class="fas fa-ticket-alt"></i> Open — Tiket Additional Sale Sekarang Tersedia
   </div>
 
-  <!-- Event Header -->
   <div class="event-header">
     <div class="event-banner">
       <img src="banner.png" alt="Liburland Festival 2026 Banner">
@@ -290,14 +194,12 @@
     </div>
   </div>
 
-  <!-- About Event -->
   <div class="section-card">
     <h2>Tentang Event</h2>
     <p><strong>LIBURLAND Festival 2026</strong> adalah perayaan tahunan yang memadukan beragam elemen seni dan hiburan dalam satu panggung megah. Festival ini menghadirkan kombinasi unik antara <strong>musik</strong>, <strong>seni</strong>, <strong>budaya</strong>, hingga <strong>komedi</strong> yang dirancang khusus untuk merayakan keberagaman dan kreativitas.</p>
     <p>Diselenggarakan di <strong>Amanah Borneo Park, Banjarbaru</strong>, edisi tahun 2026 ini mengusung tema <strong>"WORLD PEACE - MUSIC AND CULTURE"</strong> sebagai bentuk ajakan untuk merajut perdamaian melalui kekuatan musik dan budaya.</p>
   </div>
 
-  <!-- Venue Details -->
   <div class="section-card">
     <h2>Venue Details</h2>
     <div class="venue-content">
@@ -314,60 +216,39 @@
     </div>
   </div>
 
-  <!-- Tickets (Closed) -->
   <div class="section-card">
     <h2>Tiket & Kategori</h2>
     <div class="ticket-list">
       <div class="ticket-card closed">
-        <div class="ticket-info">
-          <div class="ticket-name">Earlybird Ticket</div>
-          <div class="ticket-price">Rp 145.000</div>
-        </div>
+        <div class="ticket-info"><div class="ticket-name">Earlybird Ticket</div><div class="ticket-price">Rp 145.000</div></div>
         <div class="ticket-status status-closed">Sales Closed</div>
       </div>
       <div class="ticket-card closed">
-        <div class="ticket-info">
-          <div class="ticket-name">Presale 1 Ticket</div>
-          <div class="ticket-price">Rp 195.000</div>
-        </div>
+        <div class="ticket-info"><div class="ticket-name">Presale 1 Ticket</div><div class="ticket-price">Rp 195.000</div></div>
         <div class="ticket-status status-closed">Sales Closed</div>
       </div>
       <div class="ticket-card closed">
-        <div class="ticket-info">
-          <div class="ticket-name">Presale 2 Ticket</div>
-          <div class="ticket-price">Rp 245.000</div>
-        </div>
+        <div class="ticket-info"><div class="ticket-name">Presale 2 Ticket</div><div class="ticket-price">Rp 245.000</div></div>
         <div class="ticket-status status-closed">Sales Closed</div>
       </div>
       <div class="ticket-card closed">
-        <div class="ticket-info">
-          <div class="ticket-name">Reguler VIP</div>
-          <div class="ticket-price">Rp 295.000</div>
-        </div>
+        <div class="ticket-info"><div class="ticket-name">Reguler VIP</div><div class="ticket-price">Rp 295.000</div></div>
         <div class="ticket-status status-closed">Sales Closed</div>
       </div>
       <div class="ticket-card closed">
-        <div class="ticket-info">
-          <div class="ticket-name">Reguler Festival</div>
-          <div class="ticket-price">Rp 195.000</div>
-        </div>
+        <div class="ticket-info"><div class="ticket-name">Reguler Festival</div><div class="ticket-price">Rp 195.000</div></div>
         <div class="ticket-status status-closed">Sales Closed</div>
       </div>
     </div>
 
-    <!-- ===== ANIMASI PREMIUM: TIKET TERSISA ===== -->
     <div class="premium-ticket-alert">
-      <span class="particle p1"></span>
-      <span class="particle p2"></span>
-      <span class="particle p3"></span>
-      <span class="particle p4"></span>
-      <span class="particle p5"></span>
+      <span class="particle p1"></span><span class="particle p2"></span><span class="particle p3"></span><span class="particle p4"></span><span class="particle p5"></span>
       <div class="premium-alert-content">
         <div class="premium-badge"><i class="fas fa-fire"></i> Limited Stock</div>
         <div class="premium-alert-title">
           <span class="warning-icon-anim">⚠️</span>
           <span>TIKET TERSISA</span>
-          <span class="ticket-count-display"><span class="ticket-count-number">9</span></span>
+          <span><span class="ticket-count-number">9</span></span>
           <span>LAGI</span>
           <span class="warning-icon-anim">⚠️</span>
         </div>
@@ -377,110 +258,65 @@
       </div>
     </div>
 
-    <!-- Available Tickets with +/- -->
     <div class="ticket-list">
       <div class="ticket-card" data-ticket="Additional VIP" data-price="310000">
-        <div class="ticket-info">
-          <div class="ticket-name">Additional VIP</div>
-          <div class="ticket-price">Rp 310.000</div>
-        </div>
+        <div class="ticket-info"><div class="ticket-name">Additional VIP</div><div class="ticket-price">Rp 310.000</div></div>
         <div class="qty-selector">
-          <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+          <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
           <span class="qty-value">0</span>
-          <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+          <button class="qty-btn" onclick="updateQty(this,1)">+</button>
         </div>
       </div>
       <div class="ticket-card" data-ticket="Additional Festival" data-price="210000">
-        <div class="ticket-info">
-          <div class="ticket-name">Additional Festival</div>
-          <div class="ticket-price">Rp 210.000</div>
-        </div>
+        <div class="ticket-info"><div class="ticket-name">Additional Festival</div><div class="ticket-price">Rp 210.000</div></div>
         <div class="qty-selector">
-          <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+          <button class="qty-btn" onclick="updateQty(this,-1)">-</button>
           <span class="qty-value">0</span>
-          <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+          <button class="qty-btn" onclick="updateQty(this,1)">+</button>
         </div>
       </div>
     </div>
 
-    <div class="ticket-note">
-      <i class="fas fa-exclamation-triangle"></i> Harga tiket belum termasuk pajak dan biaya platform. Pembelian tiket dilakukan melalui aplikasi Megatix resmi.
-    </div>
+    <div class="ticket-note"><i class="fas fa-exclamation-triangle"></i> Harga tiket belum termasuk pajak dan biaya platform. Pembelian tiket dilakukan melalui aplikasi Megatix resmi.</div>
 
     <div class="buy-btn-container">
-      <button class="buy-btn" id="beliBtn">
-        <i class="fas fa-shopping-cart"></i> Beli Tiket
-      </button>
+      <button class="buy-btn" id="beliBtn"><i class="fas fa-shopping-cart"></i> Beli Tiket</button>
     </div>
   </div>
 
 </div>
 
-<!-- ===== FOOTER ===== -->
 <footer>
   Copyright © 2026 <strong>Megatix</strong> • LIBURLAND Festival 2026 • All Rights Reserved<br>
   Powered by Megatix Entertainment Platform
 </footer>
 
 <script>
-  // ===== FUNGSI +/- QTY =====
-  function updateQty(btn, change) {
-    const qtySelector = btn.parentElement;
-    const valueSpan = qtySelector.querySelector('.qty-value');
-    let currentVal = parseInt(valueSpan.textContent) || 0;
-    currentVal += change;
-    if (currentVal < 0) currentVal = 0; // Validasi minimal 0
-    if (currentVal > 10) currentVal = 10; // Maksimal 10 tiket
-    valueSpan.textContent = currentVal;
-  }
-
-  // ===== BUTTON BELI TIKET → REDIRECT KE form.html =====
-  document.getElementById('beliBtn').addEventListener('click', function() {
-    let items = [];
-    let totalQty = 0;
-    let totalPrice = 0;
-
-    // Kumpulkan semua tiket yang dipilih
-    document.querySelectorAll('.ticket-card[data-ticket]').forEach(card => {
-      let qty = parseInt(card.querySelector('.qty-value').textContent) || 0;
-      if (qty > 0) {
-        let nama = card.getAttribute('data-ticket');
-        let harga = parseInt(card.getAttribute('data-price'));
-        let subtotal = qty * harga;
-        items.push({
-          jenis: nama,
-          jumlah: qty,
-          harga: harga,
-          subtotal: subtotal
-        });
-        totalQty += qty;
-        totalPrice += subtotal;
-      }
-    });
-
-    // Validasi: minimal pilih 1 tiket
-    if (items.length === 0) {
-      alert('⚠️ Silakan pilih minimal 1 tiket terlebih dahulu!');
-      return;
+function updateQty(btn,change){
+  var v=btn.parentElement.querySelector('.qty-value');
+  var n=parseInt(v.textContent)||0;
+  n=Math.max(0,Math.min(10,n+change));
+  v.textContent=n;
+}
+document.getElementById('beliBtn').addEventListener('click',function(){
+  var items=[],tq=0,tp=0;
+  document.querySelectorAll('.ticket-card[data-ticket]').forEach(function(c){
+    var q=parseInt(c.querySelector('.qty-value').textContent)||0;
+    if(q>0){
+      var nm=c.getAttribute('data-ticket'),pr=parseInt(c.getAttribute('data-price'));
+      items.push({jenis:nm,jumlah:q,harga:pr,subtotal:q*pr});
+      tq+=q;tp+=q*pr;
     }
-
-    // Simpan data ke localStorage
-    let cartData = {
-      eventName: 'LIBURLAND Festival 2026',
-      eventDate: 'Sabtu, 1 Agustus 2026 • 19:00 WITA',
-      eventVenue: 'Lap. Amanah Borneo Park - Banjar Baru',
-      items: items,
-      totalQty: totalQty,
-      totalPrice: totalPrice,
-      timestamp: new Date().toISOString()
-    };
-
-    localStorage.setItem('megatix_cart', JSON.stringify(cartData));
-
-    // Redirect ke halaman form
-    window.location.href = 'form.html';
   });
+  if(!items.length){alert('⚠️ Silakan pilih minimal 1 tiket terlebih dahulu!');return;}
+  localStorage.setItem('megatix_cart',JSON.stringify({
+    eventName:'LIBURLAND Festival 2026',
+    eventDate:'Sabtu, 1 Agustus 2026 • 19:00 WITA',
+    eventVenue:'Lap. Amanah Borneo Park - Banjar Baru',
+    items:items,totalQty:tq,totalPrice:tp,timestamp:new Date().toISOString()
+  }));
+  window.location.href='form.html';
+});
 </script>
-
 </body>
 </html>
